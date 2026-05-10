@@ -158,6 +158,9 @@ DATABASES = {
     )
 }
 
+DATABASES["replica"] = DATABASES["default"].copy()
+DATABASES["replica"]["TEST"] = {"MIRROR": "default"}
+
 # الإعداد الصحيح لـ psycopg 3 مع Neon Pooler
 for db in DATABASES.values():
     # تأكد من حذف السطر القديم الذي كان يسبب Error
