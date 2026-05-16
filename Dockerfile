@@ -45,4 +45,4 @@ RUN SECRET_KEY=dummy python3 manage.py collectstatic --no-input
 
 EXPOSE 10000
 
-CMD ["sh", "-c", "uvicorn saleor.asgi:application --host=0.0.0.0 --port=${PORT:-10000} --workers=1"]
+CMD ["sh", "-c", "uvicorn saleor.wsgi:application --host=0.0.0.0 --port=${PORT:-10000} --workers=${WEB_CONCURRENCY:-4}"]
